@@ -4,8 +4,46 @@
              xmlns:local="clr-namespace:App3"
              x:Class="App3.MainPage">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <StackLayout>
+
+    <Entry x:Name="Entry1" Placeholder="Matrícula" />
+
+    <Entry x:Name="Entry2" Keyboard="Numeric" Placeholder="Nota" />
+
+    <Picker x:Name="Picker" Title="Professor">
+        <Picker.Items>
+                <x:String>1 - Maria</x:String>
+                <x:String>2 - José</x:String>
+                <x:String>3 - João</x:String>
+                <x:String>4 - Ana</x:String>
+            </Picker.Items>
+    </Picker>
+
+    <Picker x:Name="Picker1" Title="Disciplina">
+        <Picker.Items>
+                <x:String>1 - Cálculo 1</x:String>
+                <x:String>2 - Introdução a Engenharia</x:String>
+                <x:String>3 - Cálculo 2</x:String>
+                <x:String>4 - Projetos de Engenharia</x:String>
+            </Picker.Items>
+    </Picker>
+
+    <Label x:Name="Label1" IsVisible="False"
+               Text="Nota registrada." TextColor="DarkGreen" />
+    <Label x:Name="Label01" IsVisible="False"
+               Text="Aprovado" TextColor="DarkGreen" />
+    <Label x:Name="Label02" IsVisible="False"
+               Text="Reprovado" TextColor="DarkGreen" />
+
+
+    <Label x:Name="Label2" IsVisible="False"
+               Text="Não foi possível registrar a nota." TextColor="Red" />
+
+    <Button x:Name="Button" Text="Avaliar"
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="Center"
+                Clicked="OnButtonClicked" />
+
+    </StackLayout>
 
 </ContentPage>
