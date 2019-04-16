@@ -12,13 +12,7 @@ namespace App3
     public partial class MainPage : ContentPage
     {
         // vetor de disciplinas
-        /* Disciplina[] disciplinas = new Disciplina[4]
-         {
-             new Disciplina("Cálculo 1", 1),
-             new Disciplina("Introdução a Engenharia", 2),
-             new Disciplina("Cálculo 2", 3),
-             new Disciplina("Projetos de Engenharia", 4)
-         };
+        
 
          Professor[] professor = new Professor[4]
          {
@@ -26,15 +20,35 @@ namespace App3
              new Professor("José", 2),
              new Professor("João", 3),
              new Professor("Ana", 4)
-         };*/
+         };
+        Disciplina[] disciplinas = new Disciplina[4]
+         {
+             new Disciplina("Cálculo 1", 1),
+             new Disciplina("Introdução a Engenharia", 2),
+             new Disciplina("Cálculo 2", 3),
+             new Disciplina("Projetos de Engenharia", 4)
+         };
 
 
         public MainPage()
         {
             InitializeComponent();
+            // para todos as disciplinas do vetor
+            
 
+            foreach (Professor professor in professor)
+                {
+                // adicionar um elemento na caixa de seleção
+                
+                Picker1.Items.Add(professor.código + " - " + professor.nome);
+                }
+            foreach (Disciplina disciplina in disciplinas)
+            {
+                // adicionar um elemento na caixa de seleção
+                Picker.Items.Add(disciplina.semestre + " - " + disciplina.nome);
+
+            }
         }
-
         void OnButtonClicked(object sender, EventArgs args)
         {
             // desabilitar mensagens
@@ -48,33 +62,34 @@ namespace App3
                 Entry1.Text.Length > 0 &&
                 Entry2.Text.Length > 0 &&
                 Picker.SelectedIndex >= 0 &&
-                Picker1.SelectedIndex >= 0)
+                Picker1.SelectedIndex >= 0 &&
+                (disciplinas[Picker1.SelectedIndex].Lecionar(professor[Picker.SelectedIndex]))
             {
-                // criar variáveis 
-                int matrícula = int.Parse(Entry1.Text);
-                int nota = int.Parse(Entry2.Text);
-                int professor = Picker.SelectedIndex + 1;
-                int disciplina = Picker1.SelectedIndex + 1;
-                // verificar se os valores são iguais
-                if (professor == disciplina)
-                {
-                    Label1.IsVisible = true;
 
-                    if (nota >= 6)
-                    {
-                        Label01.IsVisible = true;
-                    }
-                    else
-                    {
-                        Label02.IsVisible = true;
-                    }
+                Label1.IsVisible = true;
+                Aluno aluno = new Aluno()
+                {
+                    matrícula = Entry1.Text
+                };
+                Nota nota = new Nota
+                (aluno.matrícula,disciplinas[Picker1.SelectedIndex].nome,int.Parse(Entry1.Text));
+
+
+                if (nota.Aprovar())
+                {
+                    Label01.IsVisible = true;
                 }
                 else
+                {
+                    Label02.IsVisible = true;
+                }
+
+            }else
                 {
                     // habilitar mensagem de erro
                     Label2.IsVisible = true;
                 }
-            }
+            
 
 
         }
