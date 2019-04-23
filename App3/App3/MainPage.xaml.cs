@@ -23,10 +23,10 @@ namespace App3
          };
         Disciplina[] disciplinas = new Disciplina[4]
          {
-             new Disciplina("Cálculo 1", 1),
-             new Disciplina("Introdução a Engenharia", 2),
-             new Disciplina("Cálculo 2", 3),
-             new Disciplina("Projetos de Engenharia", 4)
+             new Disciplina("Cálculo 1", 1, 1),
+             new Disciplina("Introdução a Engenharia", 2, 2),
+             new Disciplina("Cálculo 2", 3, 3),
+             new Disciplina("Projetos de Engenharia", 4, 4)
          };
 
 
@@ -63,7 +63,7 @@ namespace App3
                 Entry2.Text.Length > 0 &&
                 Picker.SelectedIndex >= 0 &&
                 Picker1.SelectedIndex >= 0 &&
-                (disciplinas[Picker1.SelectedIndex].Lecionar(professor[Picker.SelectedIndex]))
+                disciplinas[Picker1.SelectedIndex].Lecionar(professor[Picker.SelectedIndex]))
             {
 
                 Label1.IsVisible = true;
@@ -71,8 +71,7 @@ namespace App3
                 {
                     matrícula = Entry1.Text
                 };
-                Nota nota = new Nota
-                (aluno.matrícula,disciplinas[Picker1.SelectedIndex].nome,int.Parse(Entry1.Text));
+                Nota nota = new Nota(aluno.matrícula,disciplinas[Picker1.SelectedIndex].nome,int.Parse(Entry2.Text));
 
 
                 if (nota.Aprovar())

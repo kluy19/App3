@@ -23,7 +23,7 @@
     <Label x:Name="Label01" IsVisible="False"
                Text="Aprovado" TextColor="DarkGreen" />
     <Label x:Name="Label02" IsVisible="False"
-               Text="Reprovado" TextColor="DarkGreen" />
+               Text="Reprovado" TextColor="Red" />
 
 
     <Label x:Name="Label2" IsVisible="False"
